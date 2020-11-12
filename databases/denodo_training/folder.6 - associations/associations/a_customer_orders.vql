@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_customer_orders REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT customer order (0,*)
+    ENDPOINT order customer PRINCIPAL (1)
+    ADD MAPPING customer_code=customer_code_internal;
+
+ALTER ASSOCIATION a_customer_orders
+ LAYOUT (order = [470, 30, 200, 185], customer = [120, 20, 200, 205]);
+

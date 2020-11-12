@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_hr_regions_countries REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT bv_hr_countries bv_hr_regions PRINCIPAL (0,1)
+    ENDPOINT bv_hr_regions bv_hr_countries (0,*)
+    ADD MAPPING region_id=region_id;
+
+ALTER ASSOCIATION a_hr_regions_countries
+ LAYOUT (bv_hr_regions = [20, 20, 200, 65], bv_hr_countries = [250, 20, 200, 85]);
+

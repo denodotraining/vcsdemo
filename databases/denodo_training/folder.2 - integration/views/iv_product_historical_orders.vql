@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_product_historical_orders FOLDER = '/2 - integration' AS SELECT iv_historical_orders.status AS status, count(*) AS amount, bv_product.productname AS productname FROM iv_historical_orders AS iv_historical_orders INNER JOIN bv_product AS bv_product ON iv_historical_orders.product_id = bv_product.productid  GROUP BY iv_historical_orders.status, bv_product.productname ORDER BY status ASC CONTEXT (DATAMOVEMENTPLAN = bv_product : JDBC ds_historical_orders);
+
+ALTER VIEW iv_product_historical_orders
+ LAYOUT (iv_historical_orders = [20, 20, 200, 185], bv_product = [320, 30, 200, 225]);
+

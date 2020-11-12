@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_orders_by_customer FOLDER = '/2 - integration' AS SELECT customer_code, count(*) AS total_orders FROM bv_wo_orders GROUP BY customer_code HAVING count(*) > 1;
+
+ALTER VIEW iv_orders_by_customer
+ LAYOUT (bv_wo_orders = [157, 192, 200, 200]);
+

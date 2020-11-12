@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_orders_customer_detail FOLDER = '/2 - integration' AS SELECT iv_orders.id AS id, iv_orders.customer_code AS customer_code, iv_orders.status AS status, iv_orders.date_placed AS date_placed, iv_orders.date_delivered AS date_delivered, iv_orders.date_closed AS date_closed, iv_orders.order_id AS order_id, iv_orders.product_id AS product_id, bv_wo_customer.id AS customerid, bv_wo_customer.customer_code_internal AS customer_code_internal, bv_wo_customer.first_name AS first_name, bv_wo_customer.last_name AS last_name, bv_wo_customer.email AS email, bv_wo_customer.phone AS phone, bv_wo_customer.main_address AS main_address, bv_wo_customer.main_postcode AS main_postcode, bv_wo_customer.main_country AS main_country, bv_wo_customer.registered_date AS registered_date FROM iv_orders AS iv_orders INNER JOIN bv_wo_customer AS bv_wo_customer ON iv_orders.customer_code = bv_wo_customer.customer_code_internal ;
+
+ALTER VIEW iv_orders_customer_detail
+ LAYOUT (iv_orders = [20, 20, 200, 200], bv_wo_customer = [366, 20, 200, 200]);
+

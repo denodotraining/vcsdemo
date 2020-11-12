@@ -1,0 +1,104 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC monitor_request_notification
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.monitor_request_notification.SCHEMANAME}' 
+    RELATIONNAME='REQUEST_NOTIFICATION' 
+    OUTPUTSCHEMA (
+        autoincrementid = 'AUTOINCREMENTID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        servername = 'SERVERNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        host = 'HOST' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        port = 'PORT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        id = 'ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        databasename = 'DATABASENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        username = 'USERNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        notificationtype = 'NOTIFICATIONTYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        sessionid = 'SESSIONID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        starttime = 'STARTTIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        endtime = 'ENDTIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        duration = 'DURATION' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        waitingtime = 'WAITINGTIME' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        numrows = 'NUMROWS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        state = 'STATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        completed = 'COMPLETED' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cache = 'CACHE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        query = 'QUERY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        requesttype = 'REQUESTTYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        elements = 'ELEMENTS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        truncateddata = 'TRUNCATEDDATA' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        useragent = 'USERAGENT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        accessinterface = 'ACCESSINTERFACE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        clientip = 'CLIENTIP' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        transactionid = 'TRANSACTIONID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        webservicename = 'WEBSERVICENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE
+    )
+    CONSTRAINT 'SYS_C007246' PRIMARY KEY ( 'AUTOINCREMENTID' )
+    INDEX 'SYS_C007246' CLUSTER UNIQUE PRIMARY ( 'AUTOINCREMENTID' );
+
+CREATE OR REPLACE TABLE monitor_request_notification I18N au_cst (
+        autoincrementid:decimal (notnull, sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        servername:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        host:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        port:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '10'),
+        id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        databasename:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        username:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        notificationtype:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        sessionid:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        starttime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        endtime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        duration:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        waitingtime:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        numrows:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        state:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        completed:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        cache:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        query:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        requesttype:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
+        elements:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        truncateddata:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        useragent:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        accessinterface:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        clientip:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
+        transactionid:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        webservicename:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '200')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'SYS_C007246' PRIMARY KEY ( 'autoincrementid' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD monitor_request_notification(
+        I18N au_cst
+        CONSTRAINTS (
+             ADD autoincrementid (any) OPT ANY
+             ADD servername (any) OPT ANY
+             ADD host (any) OPT ANY
+             ADD port (any) OPT ANY
+             ADD id (any) OPT ANY
+             ADD databasename (any) OPT ANY
+             ADD username (any) OPT ANY
+             ADD notificationtype (any) OPT ANY
+             ADD sessionid (any) OPT ANY
+             ADD starttime (any) OPT ANY
+             ADD endtime (any) OPT ANY
+             ADD duration (any) OPT ANY
+             ADD waitingtime (any) OPT ANY
+             ADD numrows (any) OPT ANY
+             ADD state (any) OPT ANY
+             ADD completed (any) OPT ANY
+             ADD cache (any) OPT ANY
+             ADD query (any) OPT ANY
+             ADD requesttype (any) OPT ANY
+             ADD elements (any) OPT ANY
+             ADD truncateddata (any) OPT ANY
+             ADD useragent (any) OPT ANY
+             ADD accessinterface (any) OPT ANY
+             ADD clientip (any) OPT ANY
+             ADD transactionid (any) OPT ANY
+             ADD webservicename (any) OPT ANY
+        )
+        OUTPUTLIST (accessinterface, autoincrementid, cache, clientip, completed, databasename, duration, elements, endtime, host, id, notificationtype, numrows, port, query, requesttype, servername, sessionid, starttime, state, transactionid, truncateddata, useragent, username, waitingtime, webservicename
+        )
+        WRAPPER (jdbc monitor_request_notification)
+    );
+

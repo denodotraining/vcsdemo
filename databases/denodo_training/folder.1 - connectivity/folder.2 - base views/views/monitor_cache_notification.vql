@@ -1,0 +1,119 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC monitor_cache_notification
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.monitor_cache_notification.SCHEMANAME}' 
+    RELATIONNAME='CACHE_NOTIFICATION' 
+    OUTPUTSCHEMA (
+        servername = 'SERVERNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        host = 'HOST' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        port = 'PORT' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        sessionid = 'SESSIONID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        notificationtype = 'NOTIFICATIONTYPE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        notificatinotimestamp = 'NOTIFICATINOTIMESTAMP' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  NOT NULL SORTABLE,
+        id = 'ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        querypatternid = 'QUERYPATTERNID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        databasename = 'DATABASENAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        viewname = 'VIEWNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        viewid = 'VIEWID' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        sqlviewname = 'SQLVIEWNAME' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        projectedfields = 'PROJECTEDFIELDS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  NOT NULL SORTABLE,
+        numconditions = 'NUMCONDITIONS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        vdpconditionlist = 'VDPCONDITIONLIST' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cachestatus = 'CACHESTATUS' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        ttlstatusincache = 'TTLSTATUSINCACHE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        ttlincache = 'TTLINCACHE' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        querypatternstate = 'QUERYPATTERNSTATE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        exception = 'EXCEPTION' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='4000', sourcetypeid='12', sourcetypename='VARCHAR2')  ESCAPE SORTABLE,
+        numofinsertedrows = 'NUMOFINSERTEDROWS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        numofreceivedrows = 'NUMOFRECEIVEDROWS' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        startquerypatternstoragetime = 'STARTQUERYPATTERNSTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        endquerypatternstoragetime = 'ENDQUERYPATTERNSTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        querypatternstoragetime = 'QUERYPATTERNSTORAGETIME' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        startcachedresultmdstoragetime = 'STARTCACHEDRESULTMDSTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        endcachedresultmdstoragetime = 'ENDCACHEDRESULTMDSTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        cachedresultmdstoragetime = 'CACHEDRESULTMDSTORAGETIME' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        startdatastoragetime = 'STARTDATASTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        enddatastoragetime = 'ENDDATASTORAGETIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE,
+        datastoragetime = 'DATASTORAGETIME' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        truncateddata = 'TRUNCATEDDATA' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE monitor_cache_notification I18N au_cst (
+        servername:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        host:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        port:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '10'),
+        sessionid:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        notificationtype:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        notificatinotimestamp:timestamp (notnull, sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        querypatternid:decimal (notnull, sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        databasename:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        viewname:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        viewid:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        sqlviewname:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        projectedfields:text (notnull, sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        numconditions:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        vdpconditionlist:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        cachestatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        ttlstatusincache:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        ttlincache:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        querypatternstate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '30'),
+        exception:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '4000'),
+        numofinsertedrows:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        numofreceivedrows:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        startquerypatternstoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        endquerypatternstoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        querypatternstoragetime:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        startcachedresultmdstoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        endcachedresultmdstoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        cachedresultmdstoragetime:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        startdatastoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        enddatastoragetime:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11'),
+        datastoragetime:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        truncateddata:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD monitor_cache_notification(
+        I18N au_cst
+        CONSTRAINTS (
+             ADD servername (any) OPT ANY
+             ADD host (any) OPT ANY
+             ADD port (any) OPT ANY
+             ADD sessionid (any) OPT ANY
+             ADD notificationtype (any) OPT ANY
+             ADD notificatinotimestamp (any) OPT ANY
+             ADD id (any) OPT ANY
+             ADD querypatternid (any) OPT ANY
+             ADD databasename (any) OPT ANY
+             ADD viewname (any) OPT ANY
+             ADD viewid (any) OPT ANY
+             ADD sqlviewname (any) OPT ANY
+             ADD projectedfields (any) OPT ANY
+             ADD numconditions (any) OPT ANY
+             ADD vdpconditionlist (any) OPT ANY
+             ADD cachestatus (any) OPT ANY
+             ADD ttlstatusincache (any) OPT ANY
+             ADD ttlincache (any) OPT ANY
+             ADD querypatternstate (any) OPT ANY
+             ADD exception (any) OPT ANY
+             ADD numofinsertedrows (any) OPT ANY
+             ADD numofreceivedrows (any) OPT ANY
+             ADD startquerypatternstoragetime (any) OPT ANY
+             ADD endquerypatternstoragetime (any) OPT ANY
+             ADD querypatternstoragetime (any) OPT ANY
+             ADD startcachedresultmdstoragetime (any) OPT ANY
+             ADD endcachedresultmdstoragetime (any) OPT ANY
+             ADD cachedresultmdstoragetime (any) OPT ANY
+             ADD startdatastoragetime (any) OPT ANY
+             ADD enddatastoragetime (any) OPT ANY
+             ADD datastoragetime (any) OPT ANY
+             ADD truncateddata (any) OPT ANY
+        )
+        OUTPUTLIST (cachedresultmdstoragetime, cachestatus, databasename, datastoragetime, endcachedresultmdstoragetime, enddatastoragetime, endquerypatternstoragetime, exception, host, id, notificatinotimestamp, notificationtype, numconditions, numofinsertedrows, numofreceivedrows, port, projectedfields, querypatternid, querypatternstate, querypatternstoragetime, servername, sessionid, sqlviewname, startcachedresultmdstoragetime, startdatastoragetime, startquerypatternstoragetime, truncateddata, ttlincache, ttlstatusincache, vdpconditionlist, viewid, viewname
+        )
+        WRAPPER (jdbc monitor_cache_notification)
+    );
+

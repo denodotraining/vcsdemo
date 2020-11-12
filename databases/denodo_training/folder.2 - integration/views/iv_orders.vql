@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW iv_orders FOLDER = '/2 - integration' AS SELECT id AS id, customer_code AS customer_code, status AS status, date_placed AS date_placed, date_delivered AS date_delivered, date_closed AS date_closed, order_id AS order_id, product_id AS product_id FROM (SELECT id, customer_code, status, date_placed, date_delivered, date_closed, order_id, product_id FROM iv_web_orders EXTENDED UNION ALL SELECT id, customer_code, status, dateplaced, datedelivered, dateclosed, order_id, product_id FROM iv_historical_orders);
+

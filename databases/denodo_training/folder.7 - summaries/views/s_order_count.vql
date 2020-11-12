@@ -1,0 +1,37 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC s_order_count
+    FOLDER = '/7 - summaries'
+    DATASOURCENAME=ds_web_orders
+    SCHEMANAME='${databases.denodo_training.folder.7 - summaries.views.jdbc.s_order_count.SCHEMANAME}' 
+    RELATIONNAME='S_ORDER_COUNT' 
+    OUTPUTSCHEMA (
+        customer_code = 'CUSTOMER_CODE' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='2650', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        product_id = 'PRODUCT_ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='20', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        main_country = 'MAIN_COUNTRY' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='VARCHAR2')  SORTABLE,
+        cnt_per_cust_per_product = 'CNT_PER_CUST_PER_PRODUCT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE,
+        cnt_item_per_cust_per_product = 'CNT_ITEM_PER_CUST_PER_PRODUCT' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='3', sourcetypename='NUMBER')  SORTABLE
+    );
+
+CREATE OR REPLACE SUMMARY VIEW s_order_count (
+        customer_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '2650'),
+        product_id:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '20', sourcetypesize = '38'),
+        main_country:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '100'),
+        cnt_per_cust_per_product:long (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        cnt_item_per_cust_per_product:long (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20')
+    )
+    FOLDER = '/7 - summaries'
+    ADD SEARCHMETHOD s_order_count(
+        I18N us_est
+        CONSTRAINTS (
+             ADD customer_code (any) OPT ANY
+             ADD product_id (any) OPT ANY
+             ADD main_country (any) OPT ANY
+             ADD cnt_per_cust_per_product (any) OPT ANY
+             ADD cnt_item_per_cust_per_product (any) OPT ANY
+        )
+        OUTPUTLIST (cnt_item_per_cust_per_product, cnt_per_cust_per_product, customer_code, main_country, product_id
+        )
+        WRAPPER (jdbc s_order_count)
+    )
+AS SELECT customer_code AS customer_code, product_id AS product_id, main_country AS main_country, count(order_id) AS cnt_per_cust_per_product, count(id) AS cnt_item_per_cust_per_product FROM iv_orders_customer_detail GROUP BY customer_code, product_id, main_country;
+

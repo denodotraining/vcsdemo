@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_people FOLDER = '/2 - integration' AS SELECT employee_id, first_name, last_name, email, hire_date, customer_code FROM (SELECT first_name, email, employee_id, last_name, hire_date FROM bv_hr_employees EXTENDED UNION ALL SELECT customer_code_internal AS customer_code, first_name, email, last_name, id AS employee_id FROM bv_wo_customer) ORDER BY hire_date DESC;
+
+ALTER VIEW iv_people
+ LAYOUT (bv_hr_employees = [161, 63, 200, 200], bv_wo_customer = [640, 86, 200, 200]);
+

@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_product_orders REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT product order (0,*)
+    ENDPOINT order product PRINCIPAL (1)
+    ADD MAPPING product_id=productid;
+
+ALTER ASSOCIATION a_product_orders
+ LAYOUT (order = [20, 20, 200, 185], product = [350, 70, 200, 85]);
+

@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_customer_china FOLDER = '/2 - integration'
+    PRIMARY KEY ( 'id' , 'customer_code_internal' ) AS SELECT bv_wo_customer.id, bv_wo_customer.customer_code_internal, bv_wo_customer.first_name, bv_wo_customer.last_name, bv_wo_customer.email, bv_wo_customer.phone, bv_wo_customer.main_address, bv_wo_customer.main_country, bv_wo_customer.registered_date FROM bv_wo_customer WHERE main_country = 'China' ORDER BY registered_date DESC;
+
+ALTER VIEW iv_customer_china
+ LAYOUT (bv_wo_customer = [20, 20, 200, 200]);
+

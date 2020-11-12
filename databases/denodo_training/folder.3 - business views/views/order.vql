@@ -1,0 +1,16 @@
+﻿CREATE OR REPLACE INTERFACE VIEW order (
+        id:decimal (sourcetyperadix = '10', sourcetypeid = '3'),
+        customer_code:text (sourcetyperadix = '10', sourcetypesize = '2650', sourcetypeid = '12'),
+        status:text (sourcetyperadix = '10', sourcetypesize = '50', sourcetypeid = '12'),
+        date_placed:timestamp (sourcetypedecimals = '6', sourcetyperadix = '10', sourcetypesize = '11', sourcetypeid = '93'),
+        date_delivered:timestamp (sourcetypedecimals = '6', sourcetyperadix = '10', sourcetypesize = '11', sourcetypeid = '93'),
+        date_closed:timestamp (sourcetypedecimals = '6', sourcetyperadix = '10', sourcetypesize = '11', sourcetypeid = '93'),
+        order_id:decimal (sourcetyperadix = '10', sourcetypeid = '3'),
+        product_id:decimal (sourcetyperadix = '10', sourcetypeid = '3')
+    )
+    SET IMPLEMENTATION iv_orders
+    FOLDER = '/3 - business views';
+
+ALTER VIEW order
+ LAYOUT (iv_orders = [320, 20, 213, 185]);
+

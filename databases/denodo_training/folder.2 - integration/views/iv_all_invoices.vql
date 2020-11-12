@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_all_invoices FOLDER = '/2 - integration' AS SELECT invoice_id AS invoice_id, order_id AS order_id, date_closed AS date_closed, first_name AS first_name, last_name AS last_name, email AS email, address AS address, country AS country, postal_code AS postal_code, phone AS phone, amount AS amount FROM (SELECT invoice_id, order_id, date_closed, first_name, last_name, email, address, country, postal_code, phone, amount FROM bv_invoices SQL UNION SELECT invoice, order, date_closed, name, surname, email, address, country, postal_code, phone, cost FROM bv_old_invoices);
+
+ALTER VIEW iv_all_invoices
+ LAYOUT (bv_invoices = [20, 20, 200, 200], bv_old_invoices = [510, 16, 200, 200]);
+

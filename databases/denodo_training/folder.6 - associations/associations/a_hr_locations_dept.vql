@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION a_hr_locations_dept REFERENTIAL CONSTRAINT 
+FOLDER = '/6 - associations'
+    ENDPOINT bv_hr_departments bv_hr_locations PRINCIPAL (0,1)
+    ENDPOINT bv_hr_locations bv_hr_departments (0,*)
+    ADD MAPPING location_id=location_id;
+
+ALTER ASSOCIATION a_hr_locations_dept
+ LAYOUT (bv_hr_locations = [20, 20, 200, 145], bv_hr_departments = [250, 20, 200, 105]);
+

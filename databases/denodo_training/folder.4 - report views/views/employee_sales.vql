@@ -1,0 +1,13 @@
+﻿CREATE OR REPLACE INTERFACE VIEW employee_sales (
+        employeeid:text,
+        total_sales:long,
+        total_price:decimal,
+        start_date:localdate,
+        end_date:localdate
+    )
+    SET IMPLEMENTATION iv_employee_sales
+    FOLDER = '/4 - report views';
+
+ALTER VIEW employee_sales
+ LAYOUT (iv_employee_sales = [390, 20, 200, 126]);
+

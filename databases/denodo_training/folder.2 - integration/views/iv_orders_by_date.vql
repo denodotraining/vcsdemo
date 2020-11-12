@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_orders_by_date FOLDER = '/2 - integration' AS SELECT bv_wo_orders.id, bv_wo_orders.customer_code, bv_wo_orders.status, bv_wo_orders.date_placed, bv_wo_orders.date_delivered, bv_wo_orders.date_closed, start_date_placed, end_date_placed FROM bv_wo_orders WHERE date_placed between start_date_placed AND end_date_placed USING PARAMETERS ( start_date_placed : timestamp, end_date_placed : timestamp);
+
+ALTER VIEW iv_orders_by_date
+ LAYOUT (bv_wo_orders = [20, 20, 200, 200]);
+

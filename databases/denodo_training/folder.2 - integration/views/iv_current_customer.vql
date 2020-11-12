@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_current_customer FOLDER = '/2 - integration' AS SELECT bv_wo_customer.id, bv_wo_customer.customer_code_internal, bv_wo_customer.first_name, bv_wo_customer.last_name, bv_wo_customer.email, bv_wo_customer.phone, bv_wo_customer.main_address, bv_wo_customer.main_postcode, bv_wo_customer.main_country, bv_wo_customer.registered_date FROM bv_wo_customer WHERE registered_date > DATE '2015-01-01';
+
+ALTER VIEW iv_current_customer
+ LAYOUT (bv_wo_customer = [20, 20, 200, 200]);
+

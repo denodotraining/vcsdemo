@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_hist_orders_not_processing FOLDER = '/2 - integration' DESCRIPTION = 'This view returns information about orders that are being processed. An order is in process if it is in ‘Cancelled’ or ‘Closed’ status”.'  AS SELECT bv_ho_orders.id AS id, bv_ho_orders.customer_code AS customer_code, bv_ho_orders.status AS status, bv_ho_orders.dateplaced AS dateplaced, bv_ho_orders.datedelivered AS datedelivered, bv_ho_orders.dateclosed AS dateclosed FROM bv_ho_orders WHERE (status = 'Cancelled' OR status = 'Closed');
+
+ALTER VIEW iv_hist_orders_not_processing
+ LAYOUT (bv_ho_orders = [20, 20, 213, 145]);
+
